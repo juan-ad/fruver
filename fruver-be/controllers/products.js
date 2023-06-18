@@ -1,6 +1,6 @@
 const connection = require('../connection');
 
-const get = async (req, res)=>{
+const getAll = async (req, res)=>{
     const query = "SELECT * FROM product";
     await connection.query(query, (err, data) => {
         if (!err){
@@ -69,7 +69,7 @@ const del = async (req, res)=>{
 }
 
 module.exports = {
-    get,
+    getAll,
     add,
     getById,
     update,

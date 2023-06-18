@@ -1,15 +1,16 @@
 const express = require('express');
-const { getProductos, postProductos, putProductos, deleteProductos } = require('../controllers/products');
+const { getAll, add, update, getById, del } = require('../controllers/products');
 const verifyToken = require('../token/token');
-
 const routes = express.Router();
 
-routes.get("/", verifyToken, getProductos);
+routes.get("/", getAll);
 
-routes.post("/", postProductos);
+routes.post("/", verifyToken, add);
 
-routes.put("/:idProducto", putProductos);
+routes.get("/getById/:idProducto", getById);
 
-routes.delete("/:idProducto", deleteProductos);
+routes.put("/", verifyToken, update);
+
+routes.delete("/:idProducto", verifyToken, del);
 
 module.exports = routes;
