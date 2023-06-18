@@ -47,4 +47,27 @@ router.post('/login', (req, res) => {
         }
     });
 });
+
+router.get('/get', (req, res) => {
+    const query= "SELECT * FROM admin";
+    connection.query(query, (err, results) => {
+        if (!err){
+            return res.status(200).json(results);
+        }else{
+            return res.status(500).json(err);
+        }
+    });
+});
+
+router.put('/update', (req, res) => {
+    const query= "SELECT * FROM admin";
+    connection.query(query, (err, results) => {
+        if (!err){
+            return res.status(200).json(results);
+        }else{
+            return res.status(500).json(err);
+        }
+    });
+});
+
 module.exports = router;

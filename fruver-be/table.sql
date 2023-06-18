@@ -9,3 +9,13 @@ create table admin(
 );
 
 INSERT INTO admin(name, contac_number, email, password, status) values('Admin', '3165456767', 'admin@gmail.com', 'admin', 'true');
+
+
+create table product(
+    id int NOT NULL primary key AUTO_INCREMENT,
+    name varchar(250) NOT NULL,
+    description varchar(250),
+    price integer,
+    status varchar(20),
+);
+

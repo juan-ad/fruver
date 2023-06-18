@@ -1,12 +1,13 @@
 const express = require('express')
-var cors = require('cors');
-const connection = require('./connection');
-const adminRoute = require('./routes/admin');
+const cors = require('cors');
+const adminRoutes = require('./routes/admin');
+const productRoutes = require('./routes/products');
 const app = express();
 
 app.use(cors());
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
-app.use('/admin', adminRoute);
+app.use('/admin', adminRoutes);
+app.use('/products', productRoutes);
 
 module.exports = app;

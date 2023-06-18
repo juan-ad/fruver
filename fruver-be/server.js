@@ -1,5 +1,6 @@
 require('dotenv').config();
-const http = require('http');
 const app = require('./index');
-const server = http.createServer();
-server.listen(process.env.PORT);
+
+app.listen(process.env.PORT, () =>{
+    console.log("Servidor escuchando por el puerto 3000");
+})
