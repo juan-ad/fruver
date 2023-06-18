@@ -1,67 +1,77 @@
 const connection = require('../connection');
 
-const getProductos = async (req, res)=>{
-    console.log("asdasd");
-    await connection.query("SELECT * FROM producto", (err, data) => {
-        if (err){
-            console.log(err);
-            res.status(400).json({mensaje: err});
-        }else{
+const get = async (req, res)=>{
+    const query = "SELECT * FROM product";
+    await connection.query(query, (err, data) => {
+        if (!err){
             res.status(200).json(data);
+        }else{
+            res.status(400).json({mensaje: err});
         }
     });
 }
 
-const postProductos = async (req, res)=>{
-    const {nombre, detalle} = req.body;
-    await connection.query(`INSERT INTO producto(nombre, detalle) VALUES('${nombre}', '${detalle}')`, (err, data) => {
-        if (err){
-            console.log(err);
-            res.status(400).json({mensaje: err});
+const add = async (req, res)=>{
+    let product = req.body;
+    const query = "INSERT INTO product (name, description, price, image, status) VALUES(?,?,?,?,'true')";
+    await connection.query(query, [product.name, product.description, product.price, product.image], (err, data) => {
+        if (!err){
+            return res.status(200).json({mensaje: "Producto agregado satisfactoriamente"});
         }else{
-            res.status(200).json({
-                body: {
-                    nombre, 
-                    detalle       
-                }
-            });
+            return res.status(400).json({mensaje: err});
         }
     });
 }
 
-const putProductos = async(req, res)=>{
-    const { idProducto } = req.params;
-    const { nombre, detalle } = req.body;
-    await connection.query(`UPDATE producto set nombre='${nombre}', detalle='${detalle}' WHERE id='${idProducto}'`, (err, data) => {
-        if (err){
-            console.log(err);
-            res.status(400).json({mensaje: err});
+const getById = async (req, res)=>{
+    const id = req.param.id;
+    const query = "SELECT * FROM product WHERE id = ?";
+    await connection.query(query, [id], (err, data) => {
+        if (!err){
+            res.status(200).json(data[0]);
         }else{
-            res.status(200).json({
-                body: {
-                    nombre, 
-                    detalle       
-                }
-            });
+            res.status(400).json({mensaje: err});
         }
     });
 }
 
-const deleteProductos = async (req, res)=>{
-    const { idProducto } = req.params;
-    await connection.query(`DELETE FROM producto WHERE id = '${idProducto}'`, (err, data) => {
-        if (err){
-            console.log(err);
-            res.status(400).json({mensaje: err});
+const update = async(req, res)=>{
+    let product = req.body;
+    const query = "UPDATE product set name = ?, description = ?, price = ?, image = ?, status = ? WHERE id = ?";
+    await connection.query(query, [product.name, product.description, product.price, product.image, product.status, product.id], (err, results) => {
+        if (!err){
+            if(results.affectedRows == 0){
+                return res.status(404).json({mensaje: "El producto con ese id no existe"});
+            }else{
+                return res.status(200).json({mensaje: "Producto actualizado satisfactoriamente"});
+            }
         }else{
-            res.status(200).json({mensaje: 'Registro eliminado satisfactoriamente'});
+            return res.status(400).json({mensaje: err});
+        }
+    });
+}
+
+const del = async (req, res)=>{
+    const id = req.params.id;
+    const query = "DELETE FROM producto WHERE id = ?";
+    await connection.query(query, [id], (err, results) => {
+        if (!err){
+            if (results.affectedRows == 0){
+                return res.status(404).json({mensaje: "El producto con ese id no existe"});
+            }else{
+                res.status(200).json({mensaje: 'Registro eliminado satisfactoriamente'});
+            }
+            
+        }else{
+            res.status(400).json({mensaje: err});
         }
     });
 }
 
 module.exports = {
-    getProductos,
-    postProductos,
-    putProductos,
-    deleteProductos
+    get,
+    add,
+    getById,
+    update,
+    del
 }

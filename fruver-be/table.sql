@@ -15,7 +15,8 @@ create table product(
     id int NOT NULL primary key AUTO_INCREMENT,
     name varchar(250) NOT NULL,
     description varchar(250),
-    price integer,
-    status varchar(20),
+    price integer NOT NULL,
+    image text NOT NULL,
+    status varchar(20) NOT NULL,
 );
 
