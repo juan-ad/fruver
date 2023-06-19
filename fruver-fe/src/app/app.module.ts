@@ -13,9 +13,10 @@ import { BestSellerComponent } from './best-seller/best-seller.component';
 import { FullComponent } from './layouts/full/full.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
 import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { LoginComponent } from './components/login/login.component';
+import { TokenInterceptor } from './services/token.interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Cargando...",
@@ -52,7 +53,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     HttpClientModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
-  providers: [],
+  providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

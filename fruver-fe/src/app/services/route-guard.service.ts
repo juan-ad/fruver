@@ -19,6 +19,7 @@ export class RouteGuardService {
     expectedRoleArray = expectedRoleArray['expectedRole'];
 
     const token:any = localStorage.getItem('token');
+    
     let tokenPayload:any;
     try{
       tokenPayload = jwt_decode(token);
@@ -35,7 +36,7 @@ export class RouteGuardService {
         checkRole = true;
       }
     });
-
+  
     if (tokenPayload.role == 'user' || tokenPayload.role == 'admin'){
       if (this.auth.isAuthenticated() && checkRole){
         return true;

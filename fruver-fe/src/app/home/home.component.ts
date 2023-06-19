@@ -15,9 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     if (localStorage.getItem('token') != null){
-      this.adminService.checkToken().subscribe((response:any) => {
-        this.router.navigate(['/fruver/dashboard']);
-      });
+      this.router.navigate(['/fruver/dashboard']);
     }
   }
 
