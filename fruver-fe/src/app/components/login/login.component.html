@@ -1,4 +1,4 @@
-<mat-toolbar color="warn" style="margin: 0px;">
+<mat-toolbar color="primary" style="margin: 0px;">
     <mat-toolbar-row fxLayout="row">
         <span class="title-center">Login</span>
     </mat-toolbar-row>
@@ -27,7 +27,7 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="center" style="margin: 14px;">
-    <button mat-raised-button color="warn" type="submit" (click)="handleSubmit()"
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()"
     [disabled]="!(loginForm.valid && loginForm.dirty)">Login</button>
-    <button mat-raised-button color="warn" mat-dialog-close>Cerrar</button>
+    <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
 </mat-dialog-actions>

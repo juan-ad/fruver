@@ -17,6 +17,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
 import { LoginComponent } from './components/login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
+import { MatIconModule } from '@angular/material/icon';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Cargando...",
@@ -51,6 +52,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SharedModule,
     MaterialModule,
     HttpClientModule,
+    MatIconModule,
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
   ],
   providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
