@@ -10,7 +10,7 @@ const login = async (req, res) => {
             if (results.length <= 0 || results[0].password != admin.password ){
                 return res.status(401).json({message: "Correo y/o contraseña incorrectos"});
             }else if(results[0].password == admin.password){
-                const response = { email: results[0].email };
+                const response = { email: results[0].email, role: "admin"};
                 const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, {expiresIn: '8h'})
                 return res.status(200).json({token: accessToken});
             }else{
@@ -62,12 +62,12 @@ const update = async (req, res) => {
     await connection.query(query, [admin.user, admin.email, admin.contactNumber, admin.id], (err, results) => {
         if (!err){
             if(results.affectedRows == 0){
-                return res.status(404).json({mensaje: "El admin con ese id no existe"});
+                return res.status(404).json({message: "El admin con ese id no existe"});
             }else{
-                return res.status(200).json({mensaje: "Admin actualizado satisfactoriamente"});
+                return res.status(200).json({message: "Admin actualizado satisfactoriamente"});
             }
         }else{
-            return res.status(400).json({mensaje: err});
+            return res.status(400).json({message: err});
         }
     });
 }

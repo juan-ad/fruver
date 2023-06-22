@@ -15,9 +15,11 @@ import { HeaderComponent } from './layouts/full/header/header.component';
 import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxUiLoaderModule, NgxUiLoaderConfig, SPINNER, PB_DIRECTION } from 'ngx-ui-loader';
-import { LoginComponent } from './components/login/login.component';
+import { LoginComponent } from './components/admin/login/login.component';
 import { TokenInterceptor } from './services/token.interceptor';
 import { MatIconModule } from '@angular/material/icon';
+import { ManageProductComponent } from './components/products/manage-product/manage-product.component';
+import { ProductComponent } from './components/products/product/product.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Cargando...",
@@ -40,7 +42,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     FullComponent,
     HeaderComponent,
     SidebarComponent,
-    LoginComponent
+    LoginComponent,
+    ManageProductComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,

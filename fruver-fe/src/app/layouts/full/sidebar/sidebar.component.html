@@ -1,8 +1,9 @@
 <mat-nav-list appAccordion>
-    <mat-list-item style="background-color: #e53935; color:white" appAccordionLink *ngFor="let menuItem of menuItems.getMenuItems()" routerLinkActive="selected" group="{{menuItem.state}}">
-        <a appAccordionToggle [routerLink]="['fruver/', menuItem.state]" *ngIf="(menuItem.role === '' || menuItem.role === tokenPayload.role)"></a>
-        <mat-icon style="color: white; margin-right: 5px;">{{menuItem.icon}}</mat-icon>
-        <span style="color: white">{{menuItem.name}}</span>
-        <span fxFlex></span>
+    <mat-list-item style="background-color: #e53935; color:white; margin-top: 3px;" appAccordionLink *ngFor="let menuItem of menuItems.getMenuItems()" routerLinkActive="selected" group="{{menuItem.state}}">
+        <a appAccordionToggle [routerLink]="['/fruver/', menuItem.state]" *ngIf="(menuItem.role === '' || menuItem.role === tokenPayload.role)">
+            <mat-icon style="color: white; margin-right: 5px;">{{menuItem.icon}}</mat-icon>
+            <span style="color: white">{{menuItem.name}}</span>
+            <span fxFlex></span>
+        </a>
     </mat-list-item>
 </mat-nav-list>

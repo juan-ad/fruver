@@ -7,10 +7,10 @@ routes.get("/", getAll);
 
 routes.post("/", verifyToken, add);
 
-routes.get("/getById/:idProducto", getById);
+routes.get("/getById/:id", getById);
 
 routes.put("/", verifyToken, update);
 
-routes.delete("/:idProducto", verifyToken, del);
+routes.delete("/:id", verifyToken, del);
 
 module.exports = routes;

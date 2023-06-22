@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginComponent } from '../components/login/login.component';
+import { LoginComponent } from '../components/admin/login/login.component';
 import { Router } from '@angular/router';
 import { AdminService } from '../services/admin.service';
 
