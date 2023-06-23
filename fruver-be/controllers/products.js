@@ -1,71 +1,72 @@
-const connection = require('../connection');
+const Product = require("../models/products");
 
 const getAll = async (req, res)=>{
-    const query = "SELECT * FROM product";
-    await connection.query(query, (err, data) => {
-        if (!err){
-            res.status(200).json(data);
-        }else{
-            res.status(400).json({message: err});
-        }
-    });
+    try{
+        const products = await Product.findAll();
+        return res.status(200).json(products);
+    }catch (err){
+        return res.status(400).json({message: err});
+    }
 }
 
 const add = async (req, res)=>{
-    let product = req.body;
-    const query = "INSERT INTO product (name, description, price, image, status) VALUES(?,?,?,?,'true')";
-    await connection.query(query, [product.name, product.description, product.price, product.image], (err, data) => {
-        if (!err){
-            return res.status(200).json({message: "Producto agregado satisfactoriamente"});
-        }else{
-            return res.status(400).json({message: err});
-        }
-    });
+    const product = req.body;
+    try{
+        await Product.create({
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            iamge: product.image,
+            status: 'true'
+        });
+        return res.status(200).json({message: "Producto agregado satisfactoriamente"});
+    }catch(err){
+        return res.status(400).json({message: "Producto no se pudo agregar"});
+    }
 }
 
 const getById = async (req, res)=>{
     const id = req.param.id;
-    const query = "SELECT * FROM product WHERE id = ?";
-    await connection.query(query, [id], (err, data) => {
-        if (!err){
-            res.status(200).json(data[0]);
-        }else{
-            res.status(400).json({message: err});
-        }
-    });
+    try{
+        const product = await Product.findByPk(id);
+        return res.status(200).json(product);
+    }catch{
+        return res.status(400).json({message: "El producto con ese id no existe"});
+    }
 }
 
 const update = async(req, res)=>{
-    let product = req.body;
-    const query = "UPDATE product set name = ?, description = ?, price = ?, image = ?, status = ? WHERE id = ?";
-    await connection.query(query, [product.name, product.description, product.price, product.image, product.status, product.id], (err, results) => {
-        if (!err){
-            if(results.affectedRows == 0){
-                return res.status(404).json({message: "El producto con ese id no existe"});
-            }else{
-                return res.status(200).json({message: "Producto actualizado satisfactoriamente"});
+    const product = req.body;
+    try{
+        await Product.update({
+            name: product.name,
+            description: product.description,
+            price: product.price,
+            iamge: product.image,
+            status: product.satus
+        },{
+            where: {
+                id: product.id
             }
-        }else{
-            return res.status(400).json({message: err});
-        }
-    });
+        });
+        return res.status(200).json({message: "Producto actualizado satisfactoriamente"});
+    }catch(err){
+        return res.status(400).json({message: "Producto no se pudo actualizar"});
+    }
 }
 
 const del = async (req, res)=>{
-    const id = req.params.id;
-    const query = "DELETE FROM product WHERE id = ?";
-    await connection.query(query, [id], (err, results) => {
-        if (!err){
-            if (results.affectedRows == 0){
-                return res.status(404).json({message: "El producto con ese id no existe"});
-            }else{
-                res.status(200).json({message: 'Registro eliminado satisfactoriamente'});
+    const id = req.params.id;   
+    try{
+        await Product.destroy({
+            where: {
+                id: id
             }
-            
-        }else{
-            res.status(400).json({message: err});
-        }
-    });
+        });
+        return res.status(200).json({message: 'Registro eliminado satisfactoriamente'});
+    }catch{
+        return res.status(400).json({message: "Registro no eliminado"});
+    }
 }
 
 module.exports = {

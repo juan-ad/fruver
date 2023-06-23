@@ -1,21 +1,20 @@
-create table admin(
+create table users(
     id int primary key AUTO_INCREMENT,
-    user varchar(250),
-    contac_number varchar(20),
-    email varchar(50),
-    password varchar(20),
-    status varchar(20),
+    userName varchar(250) NOT NULL,
+    contactNumber varchar(20) NOT NULL,
+    email varchar(50) NOT NULL,
+    password varchar(20) NOT NULL,
+    role varchar(20) NOT NULL,
     UNIQUE (email)
 );
 
-INSERT INTO admin(name, contac_number, email, password, status) values('Admin', '3165456767', 'admin@gmail.com', 'admin', 'true');
+INSERT INTO users (userName, contactNumber, email, password, role) values('Admin', '3165456767', 'admin@gmail.com', 'admin', 'admin');
 
-
-CREATE TABLE product(
+CREATE TABLE products(
     id int NOT NULL primary key AUTO_INCREMENT,
     name varchar(250) NOT NULL,
-    description varchar(250),
-    price integer NOT NULL,
+    description text,
+    price double NOT NULL,
     image text,
     status varchar(20) NOT NULL
 );

@@ -1,6 +1,6 @@
 const express = require('express');
 const verifyToken = require('../token/token');
-const { login, getAll, update, add } = require('../controllers/admins');
+const { login, getAll, update, add } = require('../controllers/users');
 const routes = express.Router();
 
 routes.post('/login', login);
