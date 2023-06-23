@@ -1,8 +1,9 @@
-require('dotenv').config();
-const jwt = require('jsonwebtoken');
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+dotenv.config();
 
 // Authorization: Bearer <token>
-function verifyToken(req, res, next){
+export function verifyToken(req, res, next){
     const bearerHeader = req.headers['authorization'];
     
     // Verificamos que el encabezado tenga la propiedad authorization
@@ -22,5 +23,3 @@ function verifyToken(req, res, next){
         }
     });
 }
-
-module.exports = verifyToken;

@@ -1,8 +1,9 @@
-const User = require("../models/users");
-const jwt = require('jsonwebtoken');
-require('dotenv').config;
+import { User } from '../models/users.js';
+import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken';
+dotenv.config();
 
-const login = async (req, res) => {
+export const login = async (req, res) => {
     const user = req.body;
     try{    
         const userFound = await User.findOne({
@@ -28,7 +29,7 @@ const login = async (req, res) => {
     }
 }
 
-const getAll = async (req, res) => {
+export const getAll = async (req, res) => {
     try{
         const users = await User.findAll();
         res.status(200).json(users);
@@ -37,7 +38,7 @@ const getAll = async (req, res) => {
     }
 }
 
-const add = async (req, res) => {
+export const add = async (req, res) => {
     const user = req.body;
     try{    
         const userFound = await User.findOne({
@@ -66,7 +67,7 @@ const add = async (req, res) => {
     }
 }
 
-const update = async (req, res) => {
+export const update = async (req, res) => {
     const user = req.body;
     try{
         await User.update({
@@ -83,11 +84,4 @@ const update = async (req, res) => {
     }catch(err){
         return res.status(400).json({message: "Usuario no actualizado"});
     }
-}
-
-module.exports = {
-    login,
-    getAll,
-    add,
-    update,
 }

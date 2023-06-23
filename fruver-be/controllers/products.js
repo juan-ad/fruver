@@ -1,6 +1,6 @@
-const Product = require("../models/products");
+import { Product } from "../models/products.js";
 
-const getAll = async (req, res)=>{
+export const getAll = async (req, res)=>{
     try{
         const products = await Product.findAll();
         return res.status(200).json(products);
@@ -9,7 +9,7 @@ const getAll = async (req, res)=>{
     }
 }
 
-const add = async (req, res)=>{
+export const add = async (req, res)=>{
     const product = req.body;
     try{
         await Product.create({
@@ -25,7 +25,7 @@ const add = async (req, res)=>{
     }
 }
 
-const getById = async (req, res)=>{
+export  const getById = async (req, res)=>{
     const id = req.param.id;
     try{
         const product = await Product.findByPk(id);
@@ -35,7 +35,7 @@ const getById = async (req, res)=>{
     }
 }
 
-const update = async(req, res)=>{
+export  const update = async(req, res)=>{
     const product = req.body;
     try{
         await Product.update({
@@ -55,7 +55,7 @@ const update = async(req, res)=>{
     }
 }
 
-const del = async (req, res)=>{
+export  const del = async (req, res)=>{
     const id = req.params.id;   
     try{
         await Product.destroy({
@@ -67,12 +67,4 @@ const del = async (req, res)=>{
     }catch{
         return res.status(400).json({message: "Registro no eliminado"});
     }
-}
-
-module.exports = {
-    getAll,
-    add,
-    getById,
-    update,
-    del
 }

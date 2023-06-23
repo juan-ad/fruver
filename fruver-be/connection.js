@@ -1,5 +1,6 @@
-const mysql = require('mysql');
-require('dotenv').config();
+import mysql from 'mysql';
+import dotenv from 'dotenv';
+dotenv.config();
 
 let connection = mysql.createConnection({
     port: process.env.DB_PORT,

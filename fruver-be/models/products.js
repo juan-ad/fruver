@@ -1,7 +1,7 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../database/database');
+import { DataTypes } from 'sequelize';
+import { sequelize } from '../database/database.js';
 
-const Product = sequelize.define('products', {
+export const Product = sequelize.define('products', {
   // Model attributes are defined here
   id: {
     type: DataTypes.INTEGER,
@@ -30,5 +30,3 @@ const Product = sequelize.define('products', {
 },{
     timestamps: false
 });
-
-module.exports = Product;

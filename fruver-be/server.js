@@ -1,6 +1,7 @@
-require('dotenv').config();
-const sequelize = require('./database/database');
-const app = require('./index');
+import dotenv from 'dotenv';
+import { sequelize } from './database/database.js';
+import { app } from './index.js';
+dotenv.config();
 
 // Test a base de datos
 const testDb = async() => {

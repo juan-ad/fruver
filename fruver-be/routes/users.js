@@ -1,14 +1,13 @@
-const express = require('express');
-const verifyToken = require('../token/token');
-const { login, getAll, update, add } = require('../controllers/users');
-const routes = express.Router();
+import express from 'express';
+import { verifyToken } from '../token/token.js';
+import { login, getAll, update, add } from '../controllers/users.js';
 
-routes.post('/login', login);
+export const userRoutes = express.Router();
 
-routes.post('/signup', verifyToken, add);
+userRoutes.post('/login', login);
 
-routes.get('/', verifyToken, getAll);
+userRoutes.post('/signup', verifyToken, add);
 
-routes.put('/', verifyToken, update);
+userRoutes.get('/', verifyToken, getAll);
 
-module.exports = routes;
+userRoutes.put('/', verifyToken, update);
