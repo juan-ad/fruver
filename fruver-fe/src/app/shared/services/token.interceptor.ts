@@ -19,7 +19,7 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(private router: Router) {}
 
   /**
-   * Método que permite interceptar y modificar las solicitudes HTTP salientes
+   * Método que permite interceptar y modificar las solicitudes HTTP salientes,
    * y las respuestas entrantes antes de que lleguen a su destino final.
    * Cada vez que se consuma un endpoint, se enviará el token en el encabezado
    * @param request - Solicitud entrante

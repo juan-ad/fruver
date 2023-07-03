@@ -22,9 +22,9 @@ export class RouteGuardService {
 
   /**
    * Método que se utiliza en el enrutamiento, para controlar si el usuario 
-   * tiene permiso para acceder a una ruta especìfica o componente.
-   * @param route - Srvicio que contiene la información sobre una ruta asociada a un componente cargado 
-   * en un momento determinado.
+   * tiene permiso para acceder a una ruta especìfica o componente
+   * @param route - Servicio que contiene la información sobre una ruta asociada a un componente cargado
+   * en un momento determinado
    * @returns un valor booleano, que determina si el usuario está autenticado y cuenta con permisos
    */
   canActivate(route: ActivatedRouteSnapshot):boolean {
