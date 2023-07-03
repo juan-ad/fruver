@@ -5,16 +5,28 @@ import { SnackbarService } from './snackbar.service';
 import jwt_decode from 'jwt-decode';
 import { GlobalConstants } from '../global-constants';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class RouteGuardService {
 
+  /**
+   * Constructor de la clase
+   * @param auth - Inyección del servicio de autenticación
+   * @param router - Servicio que proporciona navegación entre vistas y capacidades de manipulación de URL
+   * @param snackbarService - Inyección del servicio de para mostrar mensajes
+   */
   constructor(public auth: AuthService,
     public router: Router,
     private snackbarService: SnackbarService) { }
 
+  /**
+   * Método que se utiliza en el enrutamiento, para controlar si el usuario 
+   * tiene permiso para acceder a una ruta especìfica o componente.
+   * @param route - Srvicio que contiene la información sobre una ruta asociada a un componente cargado 
+   * en un momento determinado.
+   * @returns un valor booleano, que determina si el usuario está autenticado y cuenta con permisos
+   */
   canActivate(route: ActivatedRouteSnapshot):boolean {
     let expectedRoleArray:any = route.data;
     expectedRoleArray = expectedRoleArray['expectedRole'];

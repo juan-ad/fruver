@@ -28,7 +28,7 @@ export class ManageProductComponent implements OnInit {
   }
 
   tableData(){
-    this.productService.get().subscribe({
+    this.productService.getproducts().subscribe({
       next: (response:any)=>{
         this.dataSource = new MatTableDataSource(response);
       },
@@ -91,7 +91,7 @@ export class ManageProductComponent implements OnInit {
   }
 
   deleteProduct(id:any, dialogRef: any){
-    this.productService.delete(id).subscribe({
+    this.productService.deleteProduct(id).subscribe({
       next: (response:any) => {
         this.tableData();
         this.responseMessage = response.message;

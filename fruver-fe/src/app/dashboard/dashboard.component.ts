@@ -44,7 +44,7 @@ export class DashboardComponent implements OnInit {
 		catch(err){
 		  this.user = {};
 		}
-		this.productService.get().subscribe((products:any) => {
+		this.productService.getproducts().subscribe((products:any) => {
 			this.countProducts = products.length;	
 		});
 		this.orderservice.getOrders().subscribe((orders:any) => {

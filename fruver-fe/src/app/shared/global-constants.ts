@@ -1,11 +1,14 @@
+/**
+ * Clase que permite almacenar constantes globales
+ */
 export class GlobalConstants{
 
-    // Message
+    // Variables estáticas que definen un mensaje de error
     public static genericError: string = "Algo salió mal. Por favor intente más tarde";
 
     public static unauthorized: string = "Error, no se encuentra autorizado";
 
-    // Regex
+    // Variables estáticas que definen expresiones regulares
     public static nameRegex:string = "[a-zA-Z0-9 ]*";
 
     public static numRegex:string = "[0-9]*";
@@ -14,6 +17,6 @@ export class GlobalConstants{
 
     public static contactNumberRegex:string = "^[e0-9]{10,10}$"; 
 
-    // Variable
+    // Variable estática con el tìtulo de error
     public static error:string = "error";
 }

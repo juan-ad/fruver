@@ -58,7 +58,7 @@ export class ProductComponent implements OnInit{
       price: formData.price,
       image: this.base64Image,
     }
-    this.productService.add(data).subscribe({
+    this.productService.addProduct(data).subscribe({
       next: (response:any) => {
         this.dialogRef.close();
         this.onAddProduct.emit();
@@ -85,7 +85,7 @@ export class ProductComponent implements OnInit{
       price: formData.price,
       image: formData.image,
     }
-    this.productService.update(data).subscribe({
+    this.productService.updateProduct(data).subscribe({
       next: (response:any) => {
         this.dialogRef.close();
         this.onAddProduct.emit();
