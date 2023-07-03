@@ -9,10 +9,13 @@ export interface Menu{
 
 const MENUITEMS = [
     { state: 'dashboard', name: 'Dashboard', icon: 'dashboard', role: ''},
-    { state: 'products', name: 'Manage Products', icon: 'inventory_2', role: 'admin'}
+    { state: 'products', name: 'Gestión de productos', icon: 'inventory_2', role: 'admin'},
+    { state: 'orders', name: 'Gestión de pedidos', icon: 'import_contacts', role: 'admin'}
 ]
 
-@Injectable()
+@Injectable({
+    providedIn: 'root'
+  })
 export class MenuItems {
 
     getMenuItems(): Menu[]{

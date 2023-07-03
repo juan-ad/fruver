@@ -3,7 +3,8 @@ import { AuthService } from './auth.service';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 import { SnackbarService } from './snackbar.service';
 import jwt_decode from 'jwt-decode';
-import { GlobalConstants } from '../shared/global-constants';
+import { GlobalConstants } from '../global-constants';
+
 
 @Injectable({
   providedIn: 'root'

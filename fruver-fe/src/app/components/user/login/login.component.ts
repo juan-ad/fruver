@@ -3,9 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
-import { AdminService } from 'src/app/services/admin.service';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+
 import { GlobalConstants } from 'src/app/shared/global-constants';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private formBuilder: FormBuilder, 
     private router: Router, 
-    private adminService: AdminService,
+    private adminService: UserService,
     public dialogRef: MatDialogRef<LoginComponent>,
     private ngxService: NgxUiLoaderService,
     private snackbarService: SnackbarService

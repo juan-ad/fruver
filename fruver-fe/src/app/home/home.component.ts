@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { LoginComponent } from '../components/admin/login/login.component';
+import { LoginComponent } from '../components/user/login/login.component';
 import { Router } from '@angular/router';
-import { AdminService } from '../services/admin.service';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +11,7 @@ import { AdminService } from '../services/admin.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private router: Router, private adminService: AdminService){}
+  constructor(private dialog: MatDialog, private router: Router, private adminService: UserService){}
 
   ngOnInit(): void {
     if (localStorage.getItem('token') != null){

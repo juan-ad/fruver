@@ -9,7 +9,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MaterialRoutes } from './material.routing';
 import { MaterialModule } from '../shared/material-module';
-import { ViewBillProductsComponent } from './dialog/view-bill-products/view-bill-products.component';
 import { ConfirmationComponent } from './dialog/confirmation/confirmation.component';
 
 @NgModule({
@@ -25,7 +24,6 @@ import { ConfirmationComponent } from './dialog/confirmation/confirmation.compon
   ],
   providers: [],
   declarations: [
-    ViewBillProductsComponent,
     ConfirmationComponent    
   ]
 })

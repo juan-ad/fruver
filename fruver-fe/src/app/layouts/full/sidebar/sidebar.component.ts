@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnDestroy } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { MenuItems } from 'src/app/shared/menu-items';
+import { MenuItems } from 'src/app/shared/services/menu-items';
 import jwt_decode from 'jwt-decode';
 
 @Component({

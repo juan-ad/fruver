@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { ProductService } from 'src/app/services/product.service';
-import { SnackbarService } from 'src/app/services/snackbar.service';
+import { ProductService } from 'src/app/shared/services/product.service';
+import { SnackbarService } from 'src/app/shared/services/snackbar.service';
 import { GlobalConstants } from 'src/app/shared/global-constants';
 
 @Component({
