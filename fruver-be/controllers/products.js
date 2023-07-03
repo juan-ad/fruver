@@ -26,7 +26,7 @@ export const add = async (req, res)=>{
 }
 
 export  const getById = async (req, res)=>{
-    const id = req.param.id;
+    const id = req.params.id;
     try{
         const product = await Product.findByPk(id);
         return res.status(200).json(product);

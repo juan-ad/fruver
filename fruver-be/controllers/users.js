@@ -47,8 +47,8 @@ export const add = async (req, res) => {
         if (!userFound){
             try{
                 await User.create({
-                    userName: user.nameName,
-                    contactNumber: user.contactNumber,
+                    userName: user.userName,
+                    phone: user.phone,
                     email: user.email,
                     password: user.password,
                     role: user.role

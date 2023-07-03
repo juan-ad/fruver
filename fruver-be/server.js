@@ -8,7 +8,7 @@ const testDb = async() => {
         await sequelize.authenticate();
         console.log('Conexión realizada con éxito');
         // Correr el servicio por puerto 3000
-        app.listen(process.env.PORT, () =>{
+        app.listen(3000, () =>{
             console.log("Servidor escuchando por el puerto 3000");
         })
     } catch (error) {
