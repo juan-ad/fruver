@@ -1,5 +1,6 @@
 import { DataTypes } from 'sequelize';
 import { sequelize } from '../database/database.js';
+import { ProductOrder } from './product_order.js';
 
 export const Product = sequelize.define('product', {
   // Model attributes are defined here
@@ -33,4 +34,14 @@ export const Product = sequelize.define('product', {
 },{
     tableName: 'product',
     timestamps: false
+});
+
+Product.hasMany(ProductOrder, {
+  foreignKey: 'productId',
+  sourceKey: 'id'
+});
+
+ProductOrder.belongsTo(Product, {
+  foreignKey: 'productId',
+  targetKey: 'id'
 });
