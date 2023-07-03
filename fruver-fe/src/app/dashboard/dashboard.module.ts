@@ -1,21 +1,18 @@
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
-import { DashboardRoutingModule } from './dashboard-routing.module';
-import { DashboardComponent } from './dashboard.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DashboardComponent } from './dashboard.component';
 import { MaterialModule } from '../shared/material-module';
-
+import { DashboardRoutes } from './dashboard-routing.module';
 
 @NgModule({
-  declarations: [
-    DashboardComponent
-  ],
   imports: [
     CommonModule,
-    DashboardRoutingModule,
+    MaterialModule,
     FlexLayoutModule,
-    MaterialModule
-  ]
+    RouterModule.forChild(DashboardRoutes)
+  ],
+  declarations: [DashboardComponent]
 })
 export class DashboardModule { }

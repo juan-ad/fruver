@@ -9,12 +9,21 @@ import { ConfirmationComponent } from 'src/app/material-component/dialog/confirm
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-  role: any;
+  
+  /**
+   * Constructor de la clase
+   * @param router - Servicio que proporciona navegación entre vistas y capacidades de manipulación de URL
+   * @param dialog - Servicio utilizado para abrir cuadros de diálogo modales de Material Design
+   */
   constructor(private router: Router,
     private dialog: MatDialog) {
-
   }
 
+  /**
+   * Método que sirve para cerrar sesión, donde se abre una ventana de diálogo 
+   * para confirmar el cierre de seisón, y si es afirmativo, se limpia el almacenamiento
+   * local y se redirige a la raiz del aplicativo.
+   */
   logout(){
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {

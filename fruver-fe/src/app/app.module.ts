@@ -20,6 +20,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { ManageProductComponent } from './components/products/manage-product/manage-product.component';
 import { ProductComponent } from './components/products/product/product.component';
 
+/**
+ * Configuración para agregar un indicador de carga (loader) a la aplicación
+ * curante la carga de contenido asíncrono
+ */
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   text: "Cargando...",
   textColor: "#FFFFFF",

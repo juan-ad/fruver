@@ -4,6 +4,9 @@ import { HomeComponent } from './home/home.component';
 import { FullComponent } from './layouts/full/full.component';
 import { RouteGuardService } from './shared/services/route-guard.service';
 
+/**
+ * Configuración de rutas
+ */
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {

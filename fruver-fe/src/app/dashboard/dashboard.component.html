@@ -1,1 +1,45 @@
-<p>dashboard works!</p>
+<body>
+    <mat-card>
+        <b><span>Dashboard</span></b>
+    </mat-card>
+    <br>
+    <div class="row">
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Bienvenido</h2>
+                    <h1 class="title">{{user.userName}}</h1>
+                    <b  class="user">
+                        <b style="margin-right: 3px;">Rol:</b>{{user.role}}
+                    </b>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Total de Productos:</h2>
+                    <h1 class="title">{{countProducts}}</h1>
+                    <p>
+                        <button class="button" [routerLink]="['/fruver/products']">
+                            Gestionar productos
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card">
+                <div class="container">
+                    <h2 class="title">Pedidos por Atender:</h2>
+                    <h1 class="title">{{countOrdersAttend}}</h1>
+                    <p>
+                        <button class="button" [routerLink]="['/fruver/orders']">
+                            Gestionar pedidos
+                        </button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
