@@ -8,7 +8,7 @@ productRoutes.get("/", getAll);
 
 productRoutes.post("/", verifyToken, add);
 
-productRoutes.get("/getById/:id", getById);
+productRoutes.get("/getById/:id", verifyToken, getById);
 
 productRoutes.put("/", verifyToken, update);
 
