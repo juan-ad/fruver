@@ -1,6 +1,4 @@
-import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken';
-dotenv.config();
 
 // Authorization: Bearer <token>
 export function verifyToken(req, res, next){
@@ -13,7 +11,7 @@ export function verifyToken(req, res, next){
 
     const bearerToken = bearerHeader.split(" ")[1];
     // verificamos que el token sea válido
-    jwt.verify(bearerToken, process.env.ACCESS_TOKEN, (err, response) => {
+    jwt.verify(bearerToken, "SECRET", (err, response) => {
         if (err){
             return res.sendStatus(403);
         }else{

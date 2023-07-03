@@ -1,4 +1,4 @@
-import { Product } from "../models/products.js";
+import { Product } from "../models/product.js";
 
 export const getAll = async (req, res)=>{
     try{
@@ -16,8 +16,8 @@ export const add = async (req, res)=>{
             name: product.name,
             description: product.description,
             price: product.price,
-            iamge: product.image,
-            status: 'true'
+            image: product.image,
+            available: product.available
         });
         return res.status(200).json({message: "Producto agregado satisfactoriamente"});
     }catch(err){
@@ -42,8 +42,8 @@ export  const update = async(req, res)=>{
             name: product.name,
             description: product.description,
             price: product.price,
-            iamge: product.image,
-            status: product.satus
+            image: product.image,
+            available: product.available
         },{
             where: {
                 id: product.id
@@ -63,8 +63,8 @@ export  const del = async (req, res)=>{
                 id: id
             }
         });
-        return res.status(200).json({message: 'Registro eliminado satisfactoriamente'});
+        return res.status(200).json({message: 'Producto eliminado satisfactoriamente'});
     }catch{
-        return res.status(400).json({message: "Registro no eliminado"});
+        return res.status(400).json({message: "Producto no eliminado"});
     }
 }

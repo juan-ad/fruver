@@ -5,7 +5,9 @@ import { productRoutes } from './routes/products.js';
 export const app = express();
 
 app.use(cors());
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
+// Middleware para analizar las solicitudes con formato de formulario
+app.use(express.urlencoded({extended: true, limit: '20mb'})); // Se aumenta el límite a 20mb
+// Middleware para analizar las solicitudes con formato JSON
+app.use(express.json({limit: '20mb'}));// Se aumenta el límite a 20mb
 app.use('/users', userRoutes);
 app.use('/products', productRoutes);

@@ -1,7 +1,5 @@
-import { User } from '../models/users.js';
-import dotenv from 'dotenv';
+import { User } from '../models/user.js';
 import jwt from 'jsonwebtoken';
-dotenv.config();
 
 export const login = async (req, res) => {
     const user = req.body;
@@ -15,8 +13,8 @@ export const login = async (req, res) => {
             if (userFound.password != user.password ){
                 return res.status(401).json({message: "Correo y/o contraseña incorrectos"});
             }else if(userFound.password == user.password){
-                const response = { email: userFound.email, role: userFound.role};
-                const accessToken = jwt.sign(response, process.env.ACCESS_TOKEN, {expiresIn: '18h'})
+                const response = { email: userFound.email, role: userFound.role, userName: userFound.userName};
+                const accessToken = jwt.sign(response, "SECRET", {expiresIn: '72h'})
                 return res.status(200).json({token: accessToken});
             }else{
                 return res.status(400).json({message: "Algo salió mal. Por favor intente más tarde"});
@@ -64,24 +62,5 @@ export const add = async (req, res) => {
         }
     }catch(err){
         return res.status(400).json({message: err});
-    }
-}
-
-export const update = async (req, res) => {
-    const user = req.body;
-    try{
-        await User.update({
-            userName: user.userName,
-            contactNumber: user.contactNumber,
-            email: user.email,
-            role: user.role
-        },{
-            where: {
-                id: product.id
-            }
-        });
-        return res.status(200).json({message: "Usuario actualizado satisfactoriamente"});
-    }catch(err){
-        return res.status(400).json({message: "Usuario no actualizado"});
     }
 }
