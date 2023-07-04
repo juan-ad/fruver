@@ -29,7 +29,7 @@ export class OrderService {
   }
 
   /**
-   * Método que permite consolidar y notificar al ciente el envìo de su pedido
+   * Método que permite consolidar y notificar al ciente el envío de su pedido
    * @param id - Id del pedido
    * @returns Observable de la consulta
    */

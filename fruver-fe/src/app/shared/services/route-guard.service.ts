@@ -14,7 +14,7 @@ export class RouteGuardService {
    * Constructor de la clase
    * @param auth - Inyección del servicio de autenticación
    * @param router - Servicio que proporciona navegación entre vistas y capacidades de manipulación de URL
-   * @param snackbarService - Inyección del servicio de para mostrar mensajes
+   * @param snackbarService - Inyección del servicio para mostrar mensajes
    */
   constructor(public auth: AuthService,
     public router: Router,

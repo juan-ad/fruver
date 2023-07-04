@@ -15,11 +15,15 @@ export class ShoppingCartService {
    * Constructor de la clase
    */
   constructor() { }
-
-  // Variable que se utiliza para almacenar los productos en el carrito de compras
+  
+  /**
+   * Variable que se utiliza para almacenar los productos en el carrito de compras
+   */
   private myList:any[]=[];
 
-  // Carrito observable (emitir y suscribirse)
+  /**
+   * Carrito observable (emitir y suscribirse)
+   */
   private myCart = new BehaviorSubject<any[]>([]); 
   myCart$ = this.myCart.asObservable();
 

@@ -29,28 +29,21 @@
             </div>
             <div fxFlex="row wrap">
                 <mat-form-field appearance="fill" fxFlex>
-                    <mat-label>Imagen</mat-label>
-                    <!-- <input matInput type="file" accept="image/*" formControlName="image" (change)="onImageSelected($event)"> -->
-                    <input type="file" #fileInput hidden (change)="onImageSelected($event)">
-                    <input matInput [readonly]="true" (click)="fileInput.click()">
+                    <mat-label>Descripción</mat-label>
+                    <input matInput formControlName="description">
                 </mat-form-field>
             </div>
             <div fxFlex="row wrap">
-                <mat-form-field appearance="fill" fxFlex>
-                    <mat-label>Descripción</mat-label>
-                    <input matInput formControlName="description" required>
-                    <mat-error *ngIf="productForm.controls.description.touched && productForm.controls.description.invalid">
-                        <span *ngIf="productForm.controls.description.errors.required">Este campo es obligatorio</span>
-                        <span *ngIf="productForm.controls.description.errors.pattern">El campo es inválido</span>
-                    </mat-error>
-                </mat-form-field>
+                <input type="file" #fileInput hidden (change)="onImageSelected($event)">
+                <button style="margin-left: 5px; margin-right: 15px;" mat-raised-button color="primary" (click)="fileInput.click()">Cargar imagen</button>
+                <mat-checkbox formControlName="available">El producto está disponible?</mat-checkbox>
             </div>
         </div>
     </form>
 </mat-dialog-content>
 
 <mat-dialog-actions align="center">
-    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!(productForm.valid && productForm.dirty)">
+    <button mat-raised-button color="primary" type="submit" (click)="handleSubmit()" [disabled]="!productForm.valid">
         {{action}}
     </button>
     <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
