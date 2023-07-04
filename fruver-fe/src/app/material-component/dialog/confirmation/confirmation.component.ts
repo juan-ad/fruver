@@ -22,7 +22,7 @@ export class ConfirmationComponent implements OnInit{
   /**
    * Constructor de la clase
    * @param dialogData - Servicio para inyectar datos en un cuadro de diálogo (dialog) que se abre 
-   * utilizando el MatDialog de Angular Material.
+   * utilizando el MatDialog de Angular Material
    */
   constructor(@Inject(MAT_DIALOG_DATA) public dialogData:any){}
 
