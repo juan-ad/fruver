@@ -53,7 +53,7 @@ export class CompletePurchaseComponent implements OnInit{
    */
   ngOnInit():void{
     this.productForm = this.formBuilder.group({
-      name: [null, [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]],
+      name: [null, [Validators.required]],
       identificationNumber: [null, [Validators.required, Validators.pattern(GlobalConstants.numRegex)]],
       email: [null, [Validators.required, Validators.pattern(GlobalConstants.emailRegex)]],
       phone: [null, [Validators.required, Validators.pattern(GlobalConstants.numRegex)]],

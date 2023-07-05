@@ -75,7 +75,7 @@ export class ProductComponent implements OnInit{
    */
   ngOnInit():void{
     this.productForm = this.formBuilder.group({
-      name: [null, [Validators.required, Validators.pattern(GlobalConstants.nameRegex)]],
+      name: [null, [Validators.required]],
       description: [null],
       price: [null, [Validators.required, Validators.pattern(GlobalConstants.numRegex)]],
       available: [true]
