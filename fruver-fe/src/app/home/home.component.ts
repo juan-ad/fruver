@@ -27,13 +27,9 @@ export class HomeComponent implements OnInit {
     private cartService: ShoppingCartService){}
 
   /**
-   * Inicializador de la clase, donde si el usuario está autenticado, 
-   * se lo redirige al dashboard
+   * Inicializador de la clase
    */
   ngOnInit(): void {
-    if (localStorage.getItem('token') != null){
-      this.router.navigate(['/fruver/dashboard']);
-    }
   }
 
   /**
