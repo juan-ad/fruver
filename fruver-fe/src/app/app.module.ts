@@ -19,6 +19,14 @@ import { TokenInterceptor } from './shared/services/token.interceptor';
 import { MatIconModule } from '@angular/material/icon';
 import { ManageProductComponent } from './components/products/manage-product/manage-product.component';
 import { ProductComponent } from './components/products/product/product.component';
+import { ViewOrderComponent } from './components/orders/view-order/view-order.component';
+import { OrderDetailComponent } from './components/orders/order-detail/order-detail.component';
+import { DataViewModule } from 'primeng/dataview';
+import { ButtonModule } from 'primeng/button';
+import { DropdownModule } from 'primeng/dropdown';
+import { ProductViewComponent } from './components/products/product-view/product-view.component';
+import { ShoppingCartComponent } from './components/cart/shopping-cart/shopping-cart.component';
+import { CompletePurchaseComponent } from './components/cart/complete-purchase/complete-purchase.component';
 
 /**
  * Configuración para agregar un indicador de carga (loader) a la aplicación
@@ -47,7 +55,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SidebarComponent,
     LoginComponent,
     ManageProductComponent,
-    ProductComponent
+    ProductComponent,
+    ViewOrderComponent,
+    OrderDetailComponent,
+    ProductViewComponent,
+    ShoppingCartComponent,
+    CompletePurchaseComponent
   ],
   imports: [
     BrowserModule,
@@ -59,9 +72,18 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MaterialModule,
     HttpClientModule,
     MatIconModule,
-    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig)
+    DataViewModule,
+    ButtonModule,
+    DropdownModule,
+    NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
   ],
-  providers: [HttpClientModule, {provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true}],
-  bootstrap: [AppComponent]
+  providers: [
+    HttpClientModule, 
+    {
+      provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true
+    },
+  ], 
+    bootstrap: [AppComponent]
 })
 export class AppModule { }
+

@@ -1,0 +1,32 @@
+<div class="productCart-wrapper">
+    <span style="padding: 5px; background-color: #e53935; color: white; font-size: 20px; font-weight: bold; text-align: right;">Mi carrito</span>
+    <article class="productCart" *ngFor="let product of myCart$ | async">
+      <div class="productCart-body">
+        <p style="font-weight: bold;">{{ product.name }}</p>
+        <div class="productCart-body-info">
+          <span>$ {{ product.price }}</span>x
+          <span>{{ product.amount }} uds</span>
+        </div>
+      </div>
+      <div class="productCart-total" style="margin-top: 50px;">
+        <span>$ {{ totalProduct(product.price, product.amount) }}</span>
+      </div>
+      <div class="productCart-buttons" style="margin-top: 50px;">
+        <div class="productCart-buttons-operators">
+          <i style="cursor: pointer;" class="pi pi-minus-circle" (click)="updateUnits('minus', product.id)"></i>
+          <span>{{ product.amount }}</span>
+          <i style="cursor: pointer;" class="pi pi-plus-circle" (click)="updateUnits('add', product.id)"></i>
+        </div>
+        <i style="cursor: pointer;" class="pi pi-trash" (click)="deleteProduct(product.id)"></i>
+      </div>
+    </article>
+    <div class="cartTotal">
+      <p class="cartTotal-total">Total: $ {{ totalCart() }}</p>
+    </div>
+    <div style="display: flex; justify-content: center; align-items: center;">
+      <button style="width: 50%;" mat-raised-button color="primary" type="submit" (click)="buy()"
+        [disabled]="!(myCart$ | async)?.length">
+        Comprar
+      </button>
+    </div>
+</div>

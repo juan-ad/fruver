@@ -1,0 +1,67 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row">
+        <span class="title-center">COMPLETAR PROCESO DE COMPRA</span>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="productForm">
+        <div fxFlex fxLayout="column">
+            <div fxFlex="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Nombre</mat-label>
+                    <input matInput formControlName="name" required>
+                    <mat-error *ngIf="productForm.controls.name.touched && productForm.controls.name.invalid">
+                        <span *ngIf="productForm.controls.name.errors.required">Este campo es obligatorio</span>
+                        <span *ngIf="productForm.controls.name.errors.pattern">El campo es inválido</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Nùmero de identificaciòn</mat-label>
+                    <input matInput formControlName="identificationNumber" required>
+                    <mat-error *ngIf="productForm.controls.identificationNumber.touched && productForm.controls.identificationNumber.invalid">
+                        <span *ngIf="productForm.controls.identificationNumber.errors.required">Este campo es obligatorio</span>
+                        <span *ngIf="productForm.controls.identificationNumber.errors.pattern">El campo es inválido</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" required>
+                    <mat-error *ngIf="productForm.controls.email.touched && productForm.controls.email.invalid">
+                        <span *ngIf="productForm.controls.email.errors.required">Este campo es obligatorio</span>
+                        <span *ngIf="productForm.controls.email.errors.pattern">El campo es inválido</span>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Nùmero de celular</mat-label>
+                    <input matInput formControlName="phone" required>
+                    <mat-error *ngIf="productForm.controls.phone.touched && productForm.controls.phone.invalid">
+                        <span *ngIf="productForm.controls.phone.errors.required">Este campo es obligatorio</span>
+                        <span *ngIf="productForm.controls.phone.errors.pattern">El campo es inválido</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div fxFlex="row wrap">
+                <mat-form-field appearance="fill" fxFlex>
+                    <mat-label>Dirección de envío</mat-label>
+                    <input matInput formControlName="shoppingAddress" required>
+                    <mat-error *ngIf="productForm.controls.shoppingAddress.touched && productForm.controls.shoppingAddress.invalid">
+                        <span *ngIf="productForm.controls.shoppingAddress.errors.required">Este campo es obligatorio</span>
+                        <span *ngIf="productForm.controls.shoppingAddress.errors.pattern">El campo es inválido</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="center">
+    <button mat-raised-button color="primary" type="submit" (click)="buy()" [disabled]="!productForm.valid">
+        Solicitar pedido
+    </button>
+    <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
+</mat-dialog-actions>

@@ -1,0 +1,20 @@
+.mat-toolbar{
+    width: auto;
+}
+
+.title-center{
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+mat-form-field{
+    padding: 5px;
+}
+
+::ng-deep .mat-mdc-dialog-surface {
+    overflow: hidden !important;
+}
+
+::ng-deep .mdc-dialog__actions {
+    margin-bottom: 10px !important;
+}
